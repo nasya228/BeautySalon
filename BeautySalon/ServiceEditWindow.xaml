@@ -1,0 +1,95 @@
+﻿<Window x:Class="BeautySalon.Views.ServiceEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Услуга — редактирование"
+        Icon="/Resources/beauty_logo.ico"
+        Height="540" Width="560"
+        MinHeight="500" MinWidth="520"
+        FontFamily="Tahoma"
+        Background="White"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="SecondaryBackground" Color="#E1E4FF"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#FF4A6D"/>
+
+        <Style x:Key="AccentButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="14,7"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource SecondaryBackground}"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="14,7"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка с логотипом -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,16">
+            <Image Source="/Resources/beauty_logo.png" Height="36" Margin="0,0,10,0"/>
+            <TextBlock Text="Данные услуги" FontSize="16" FontWeight="Bold"
+                       VerticalAlignment="Center"
+                       Foreground="{StaticResource AccentBrush}"/>
+        </StackPanel>
+
+        <!-- Поля -->
+        <TextBlock Grid.Row="1" Text="Наименование" FontWeight="SemiBold"/>
+        <TextBox x:Name="TitleBox" Grid.Row="2" Margin="0,4,0,12" Padding="6"/>
+
+        <TextBlock Grid.Row="3" Text="Стоимость, ₽" FontWeight="SemiBold"/>
+        <TextBox x:Name="CostBox" Grid.Row="4" Margin="0,4,0,12" Padding="6"/>
+
+        <TextBlock Grid.Row="5" Text="Длительность, сек" FontWeight="SemiBold"/>
+        <TextBox x:Name="DurationBox" Grid.Row="6" Margin="0,4,0,12" Padding="6"/>
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,0,0,12">
+            <StackPanel Width="240" Margin="0,0,20,0">
+                <TextBlock Text="Скидка, % (пусто — нет)" FontWeight="SemiBold"/>
+                <TextBox x:Name="DiscountBox" Margin="0,4,0,0" Padding="6"/>
+            </StackPanel>
+
+            <StackPanel Width="240">
+                <TextBlock Text="Путь к изображению" FontWeight="SemiBold"/>
+                <TextBox x:Name="ImagePathBox" Margin="0,4,0,0" Padding="6"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Превью выбранного изображения -->
+        <Border Grid.Row="8" Width="120" Height="120" BorderThickness="1"
+                BorderBrush="{StaticResource SecondaryBackground}">
+            <Image x:Name="PreviewImage" Stretch="UniformToFill"/>
+        </Border>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="9" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="Сохранить" Width="120"
+                    Style="{StaticResource AccentButton}"
+                    Click="SaveButton_Click"/>
+            <Button Content="Отмена" Width="100"
+                    Style="{StaticResource SecondaryButton}"
+                    Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
